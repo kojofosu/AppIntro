@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat.Type.systemBars
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.github.appintro.indicator.DotIndicatorController
@@ -422,7 +423,9 @@ abstract class AppIntroBase : AppCompatActivity(), AppIntroViewPagerListener {
         }
 
         pager = findViewById(R.id.view_pager)
-        pagerAdapter = PagerAdapter(fragments[currentSlideNumber].childFragmentManager, fragments)
+        if (pager.size > 0) {
+            pagerAdapter = PagerAdapter(fragments[currentSlideNumber - 1].childFragmentManager, fragments)
+        }
 
         doneButton.setOnClickListener(NextSlideOnClickListener(isLastSlide = true))
         nextButton.setOnClickListener(NextSlideOnClickListener(isLastSlide = false))
