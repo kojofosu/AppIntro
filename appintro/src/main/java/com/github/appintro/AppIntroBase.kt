@@ -424,7 +424,10 @@ abstract class AppIntroBase : AppCompatActivity(), AppIntroViewPagerListener {
 
         pager = findViewById(R.id.view_pager)
         if (pager.size > 0) {
-            pagerAdapter = PagerAdapter(fragments[currentSlideNumber - 1].childFragmentManager, fragments)
+            pagerAdapter =
+                PagerAdapter(fragments[currentSlideNumber - 1].childFragmentManager, fragments)
+        } else {
+            pagerAdapter = PagerAdapter(supportFragmentManager, fragments)
         }
 
         doneButton.setOnClickListener(NextSlideOnClickListener(isLastSlide = true))
