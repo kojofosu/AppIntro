@@ -421,7 +421,7 @@ abstract class AppIntroBase : AppCompatActivity(), AppIntroViewPagerListener {
             backButton.scaleX = -1f
         }
 
-        pagerAdapter = PagerAdapter(supportFragmentManager, fragments)
+        pagerAdapter = PagerAdapter(fragments[currentSlideNumber].childFragmentManager, fragments)
         pager = findViewById(R.id.view_pager)
 
         doneButton.setOnClickListener(NextSlideOnClickListener(isLastSlide = true))
